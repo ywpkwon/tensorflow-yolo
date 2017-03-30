@@ -96,7 +96,7 @@ class YoloTinyNet(Net):
     scales = tf.reshape(local3[:, n1:n2], (-1, self.cell_size, self.cell_size, self.boxes_per_cell))
     boxes = tf.reshape(local3[:, n2:], (-1, self.cell_size, self.cell_size, self.boxes_per_cell * 4))
 
-    local3 = tf.concat(3, [class_probs, scales, boxes])
+    local3 = tf.concat(axis=3, values=[class_probs, scales, boxes])
 
     predicts = local3
 
